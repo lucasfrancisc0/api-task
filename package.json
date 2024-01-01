@@ -1,0 +1,13 @@
+{
+  "name": "Api tasks ignite Nodejs Exercise 01",
+  "version": "1.0.0",
+  "description": "\"api-task Ignite 01 Nodejs\"",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch ./src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
