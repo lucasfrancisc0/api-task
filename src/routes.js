@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 
 import { buildRoutePath } from './utils/build-route-path.js';
 import { Database } from  './database.js';
+import { run } from '../streams/import-csv.js';
 
 const database = new Database();
 
@@ -126,5 +127,23 @@ export const routes = [
 
   },
 
+  {
+    method: 'GET',
+    path: buildRoutePath('/export-tasks-csv'),
+    handler: async (req, res) => {
+      
+
+      try{
+        const tasks = database.select('tasks');
+        await run(tasks);
+
+        res.writeHead(204).end()
+      } catch (error){
+        console.error(error);
+        res.writeHead(500).end('Error export')
+      }
+      
+    }
+  }
 
 ];
